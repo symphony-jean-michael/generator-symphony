@@ -76,6 +76,10 @@ module.exports = class extends Generator {
           {
             name: 'Python',
             value: 'python'
+          },
+          {
+            name: 'TypeScript',
+            value: 'typescript'
           }
         ],
         when: answer => answer.application !== 'workflow-bot-app'
@@ -101,12 +105,14 @@ module.exports = class extends Generator {
         name: 'appId',
         message: 'Enter your app id',
         default: 'app-id',
-        when: answer => answer.application === 'ext-app'
+        when: answer => answer.application === 'ext-app' && answer.language !== 'typescript'
       }
     ]);
 
     if (this.answers.application === 'workflow-bot-app') {
       this.composeWith(require.resolve('../workflow'), this.answers);
+    } else if (this.answers.language === 'typescript') {
+      this.composeWith(require.resolve('../typescript'), this.answers)
     } else if (this.answers.language === 'java') {
       this.composeWith(require.resolve('../java'), this.answers);
     } else if (this.answers.language === 'python') {

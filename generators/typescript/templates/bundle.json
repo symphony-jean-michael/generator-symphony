@@ -1,0 +1,13 @@
+{
+  "applications": [
+    {
+      "type": "<%= appType %>",
+      "id": "<%= appId %>",
+      "name": "<%= appName %>",
+      "blurb": "<%= appDesc %>",
+      "publisher": "<%= appPublisher %>",
+      "url": "https://<%= appDomain %>:4000/controller.html",
+      "domain": "<%= appDomain %>"
+    }
+  ]
+}
